@@ -39,8 +39,8 @@ jobs:
       run: |
         # Berpindah ke folder MLProject di dalam folder Workflow-CI sesuai struktur terpisah yang benar
         cd Workflow-CI/MLProject
-        # Menjalankan re-training model lewat MLflow Project secara lokal di runner
-        mlflow run . --no-conda
+        # Menjalankan re-training model lewat MLflow Project secara lokal di runner tanpa conda manager tambahan
+        mlflow run . --env-manager local
 
     - name: Install Python dependencies
       run: echo "Verifikasi dependensi selesai."
