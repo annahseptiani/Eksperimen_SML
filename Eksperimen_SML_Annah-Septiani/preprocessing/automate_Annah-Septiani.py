@@ -1,3 +1,5 @@
+# Uji coba pemicu otomatis GitHub Actions untuk Kriteria 1
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, LabelEncoder
