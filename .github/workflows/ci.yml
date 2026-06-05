@@ -35,7 +35,6 @@ jobs:
     - name: Run mlflow project
       env:
         DAGSHUB_USERNAME: "annahseptiani14"
-        # Menambahkan otentikasi aman token DagsHub agar terhindar dari Error 403 Forbidden
         DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         MLFLOW_TRACKING_URI: "https://dagshub.com/annahseptiani14/Eksperimen_SML.mlflow"
       run: |
