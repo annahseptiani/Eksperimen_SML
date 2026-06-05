@@ -4,37 +4,26 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'wine_raw.csv'
-      - 'preprocessing/automate_Annah-Septiani.py'
+  workflow_dispatch: # Fitur opsional agar tombol "Run workflow" manual muncul di web
 
 jobs:
   run-preprocessing:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Repository Code
+        uses: actions/checkout@v3
 
-    - name: Initialize Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
 
-    - name: Install Libraries
-      run: |
-        python -m pip install --upgrade pip
-        pip install pandas numpy scikit-learn
+      - name: Install Pandas Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
 
-    - name: Execute Automation Script
-      run: |
-        cd preprocessing
-        python automate_Annah-Septiani.py
-
-    - name: Sync Processed Data
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add preprocessing/wine_preprocessed.csv
-        git diff-index --quiet HEAD || git commit -m "Automated update: wine_preprocessed.csv"
-        git push
+      - name: Execute Preprocessing Script
+        run: |
+          python Eksperimen_SML_Annah-Septiani/preprocessing/automate_Annah-Septiani.py
